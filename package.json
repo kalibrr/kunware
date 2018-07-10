@@ -20,7 +20,9 @@
     "lint:js": "node_modules/eslint/bin/eslint.js -c .eslintrc.yml 'lib/**/*.js' 'test/**/*.js' 'bin/kunware' '*.js' 'public/**/*.js'",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test": "node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha test test/middleware",
-    "test:coverage": "rm -rf ./coverage; node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec test test/middleware"
+    "test:coverage": "rm -rf ./coverage; node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec test test/middleware",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -34,7 +36,8 @@
     "minimist": "^1.2.0",
     "server-destroy": "^1.0.1",
     "swagger-express-middleware": "^1.0.0-alpha.12",
-    "swagger-ui": "^2.2.10"
+    "swagger-ui": "^2.2.10",
+    "snyk": "^1.88.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
@@ -50,5 +53,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "snyk": true
 }
